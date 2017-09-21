@@ -29,12 +29,12 @@ public:
   // Деструктор.
   ~ThreadPool();
   // Асинхронный вызов.
-  template<class Function, class... Args>
+  template<typename Function, typename... Args>
   bool AsyncCall(Function&& fn, Args&&... args);
 };
 
 // Асинхронный вызов.
-template<class Function, class... Args>
+template<typename Function, typename... Args>
 bool ThreadPool::AsyncCall(Function&& fn, Args&&... args) {
   {
     std::lock_guard<std::mutex> autoLock(lock);
